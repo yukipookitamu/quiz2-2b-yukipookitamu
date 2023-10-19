@@ -9,10 +9,12 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
+    // iterate through the CLI arguments (file paths given)
     for (int i = 1; i < argc; i++) {
         char *file_path = argv[i];
         struct stat file_info;
 
+        // stat displays file or file system status
         if (stat(file_path, &file_info) == 0) {
             if (S_ISREG(file_info.st_mode)) {
                 printf("%s: regular file\n", file_path);
